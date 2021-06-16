@@ -1,0 +1,36 @@
+.footer-navigation {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  min-width: 1166px;
+  padding: 0;
+}
+
+.footer-navigation__item {
+  font-weight: 600;
+  list-style: none;
+  margin: 0;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-right: 66px;
+}
+
+.footer-navigation__item:last-child {
+  margin-right: 0;
+}
+
+.footer-navigation__link {
+  color: $basic-text-color;
+
+  &:hover {
+      color: $basic-bright;
+      opacity: 0.3;
+  }
+  &:active {
+      color: $basic-bright;
+  }
+
+  &--active {
+      color: $basic-bright;
+  }
+}
