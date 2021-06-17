@@ -1,0 +1,38 @@
+.reviews {
+  position: relative;
+}
+
+.reviews__btn {
+  border: 1px solid $basic-bright;
+  font-weight: 600;
+  font-size: 14px;
+  color: $basic-bright;
+  text-decoration: none;
+  text-transform: uppercase;
+  background-color: $basic-white;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  width: 189px;
+  min-height: 52px;
+  position: absolute;
+  right: 0;
+
+  &:hover {
+      opacity: 0.8;
+  }
+  &:active {
+      opacity: 0.7;
+  }
+}
+
+.reviews__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
