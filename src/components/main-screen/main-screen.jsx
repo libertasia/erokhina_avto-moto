@@ -32,10 +32,10 @@ const MainScreen = () => {
             <div className="auto-card__promo">
               <h2 className="auto-card__title">Марпех 11</h2>
               <ul className="auto-card__details-list">
-                <li className="auto-card__details-item">Бензин</li>
-                <li className="auto-card__details-item">Механика</li>
-                <li className="auto-card__details-item">100 л.с.</li>
-                <li className="auto-card__details-item">1.4 л</li>
+                <li className="auto-card__details-item auto-card__details-item--petrol">Бензин</li>
+                <li className="auto-card__details-item auto-card__details-item--mechanics">Механика</li>
+                <li className="auto-card__details-item auto-card__details-item--horse">100 л.с.</li>
+                <li className="auto-card__details-item auto-card__details-item--engine">1.4 л</li>
               </ul>
               <div className="auto-card__price">
                 <span className="auto-card__discount-price">2 300 000 ₽</span>
