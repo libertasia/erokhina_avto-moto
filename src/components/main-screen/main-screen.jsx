@@ -2,8 +2,8 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import logo from '../../img/logo.svg';
 import {AppRoute} from '../../const';
-// import ConversionForm from '../conversion-form/conversion-form';
-// import ConversionHistory from '../conversion-history/conversion-history';
+import Tabs from './tabs';
+
 
 const MainScreen = () => {
 
@@ -23,29 +23,31 @@ const MainScreen = () => {
         </nav>
       </header>
       <main className="main container">
-        {/* <p className="promo__bank-title">Example</p> */}
-        {/* <div className="promo">
-          <div className="container promo__container">
-            <p className="promo__bank-title">Лига Банк</p>
-            <p className="promo__text">Кредиты на любой случай</p>
-            <Link className="promo__link" to={AppRoute.LOAN}>Рассчитать кредит</Link>
-          </div>
-        </div>
-        <div className="container">
-          <h1 className="main__header">Конвертер валют</h1>
-          <ConversionForm />
-          <ConversionHistory />
-        </div> */}
         <section className="auto-card">
           <h1 className="visually-hidden">Автомобиль Марпех 11</h1>
           <div className="auto-card__info">
             <div className="auto-card__slider slider">
             </div>
-            <div className="auto-card__info info">
+
+            <div className="auto-card__promo">
+              <h2 className="auto-card__title">Марпех 11</h2>
+              <ul className="auto-card__details-list">
+                <li className="auto-card__details-item">Бензин</li>
+                <li className="auto-card__details-item">Механика</li>
+                <li className="auto-card__details-item">100 л.с.</li>
+                <li className="auto-card__details-item">1.4 л</li>
+              </ul>
+              <div className="auto-card__price">
+                <span className="auto-card__discount-price">2 300 000 ₽</span>
+                <span className="auto-card__normal-price">2 400 000 ₽</span>
+              </div>
+              <button>Оставить заявку</button>
+              <button>В кредит от 11 000 ₽</button>
             </div>
           </div>
 
-          <div className="auto-card__desc auto-nav">
+          <Tabs />
+          {/* <div className="auto-card__desc auto-nav">
             <ul className="auto-nav__list">
               <li className="auto-nav__item auto-nav__item--active">
                 <a href="#" className="auto-nav__link auto-nav__link--active">Характеристики</a>
@@ -57,7 +59,7 @@ const MainScreen = () => {
                 <a href="#" className="auto-nav__link">Контакты</a>
               </li>
             </ul>
-            <div className="avto-nav__text visually-hidden">
+            <div className="avto-nav__text">
               <ul className="auto-nav__details-list">
                 <li className="auto-nav__details-item">
                   <span className="auto-nav__details-name">Трансмиссия</span>
@@ -89,7 +91,7 @@ const MainScreen = () => {
                 </li>
               </ul>
             </div>
-            <div className="auto-nav__reviews reviews visually-hidden">
+            <div className="auto-nav__reviews reviews">
               <button className="reviews__btn" type="button">оставить отзыв</button>
               <ul className="reviews__list">
                 <li className="review">
@@ -153,7 +155,7 @@ const MainScreen = () => {
                 <img className="map__image" src="https://via.placeholder.com/431x271" width={431} height={271} alt="Карта нахождения магазина в г. Санкт-Петербург" />
               </div>
             </div>
-          </div>
+          </div> */}
         </section>
       </main>
       <footer className="footer">

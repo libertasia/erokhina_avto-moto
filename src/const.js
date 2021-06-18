@@ -17,7 +17,11 @@ const APIRoute = {
   ROOT: `/`,
 };
 
-
+const TabTypes = {
+  CHARACTERISTICS: `characteristics`,
+  REVIEWS: `reviews`,
+  CONTACTS: `contacts`,
+};
 // const APIKey = `498eb836c87d82b00421`;
 
-export {AppRoute, APIRoute};
+export {AppRoute, APIRoute, TabTypes};
