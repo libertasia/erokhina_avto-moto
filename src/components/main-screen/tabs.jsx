@@ -8,6 +8,10 @@ import {TabTypes} from '../../const';
 // import {getFilm, getReviews, getActiveTab} from '../../../store/selectors';
 import {getActiveTab} from '../../store/selectors';
 import {ActionCreator} from '../../store/action';
+import map1xpng from '../../img/map@1x.png';
+import map2xpng from '../../img/map@2x.png';
+import map1xwebp from '../../img/map@1x.webp';
+import map2xwebp from '../../img/map@2x.webp';
 
 const TabDetails = [
   {
@@ -140,8 +144,11 @@ const Tabs = (props) => {
               <p className="auto-nav__contacts-text"><a className="auto-nav__contacts-link" href="mailto:info@avto-moto.ru">info@avto-moto.ru</a></p>
             </div>
           </div>
-          <div className="auto-nav__contacts-map map">
-            <img className="map__image" src="https://via.placeholder.com/431x271" width={431} height={271} alt="Карта нахождения магазина в г. Санкт-Петербург" />
+          <div className="auto-nav__contacts-map">
+            <picture>
+              <source type="image/webp" media="(min-width: 1024px)" srcSet={`${map1xwebp} 1x, ${map2xwebp} 2x`} />
+              <img className="auto-nav__map-image" src={map1xpng} srcSet={`${map2xpng} 2x`} width={431} height={271} alt="Карта нахождения магазина в г. Санкт-Петербург" />
+            </picture>
           </div>
         </div>
       );
