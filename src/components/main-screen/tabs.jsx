@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import {YMaps, Map, Placemark} from 'react-yandex-maps';
 // import dayjs from 'dayjs';
 // import {FilmShape, ReviewsShape} from '../../../shapes';
 import {TabTypes} from '../../const';
@@ -12,6 +13,7 @@ import map1xpng from '../../img/map@1x.png';
 import map2xpng from '../../img/map@2x.png';
 import map1xwebp from '../../img/map@1x.webp';
 import map2xwebp from '../../img/map@2x.webp';
+import pin from '../../img/pin.svg';
 
 const TabDetails = [
   {
@@ -145,10 +147,27 @@ const Tabs = (props) => {
             </div>
           </div>
           <div className="auto-nav__contacts-map">
-            <picture>
-              <source type="image/webp" media="(min-width: 1024px)" srcSet={`${map1xwebp} 1x, ${map2xwebp} 2x`} />
-              <img className="auto-nav__map-image" src={map1xpng} srcSet={`${map2xpng} 2x`} width={431} height={271} alt="Карта нахождения магазина в г. Санкт-Петербург" />
-            </picture>
+            <YMaps>
+              <Map className="auto-nav__map-yandex"
+                defaultState={{
+                  center: [59.968137, 30.316272],
+                  zoom: 15
+                }}
+                width={431}
+                height={271}>
+                <Placemark
+                  geometry={[59.968137, 30.316272]}
+                  options={{
+                    iconLayout: `default#image`,
+                    iconImageHref: pin
+                  }}
+                />
+              </Map>
+              <picture>
+                <source type="image/webp" media="(min-width: 1024px)" srcSet={`${map1xwebp} 1x, ${map2xwebp} 2x`} />
+                <img className="auto-nav__map-image" src={map1xpng} srcSet={`${map2xpng} 2x`} width={431} height={271} alt="Карта нахождения магазина в г. Санкт-Петербург" />
+              </picture>
+            </YMaps>
           </div>
         </div>
       );

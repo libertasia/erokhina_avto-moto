@@ -114,6 +114,14 @@
   margin-left: 74px;
 }
 
+.auto-nav__map-yandex {
+  position: absolute;
+  z-index: 0;
+  width: 431px;
+  height: 271px;
+}
+
 .auto-nav__map-image {
+  position: absolute;
   z-index: -1;
 }
