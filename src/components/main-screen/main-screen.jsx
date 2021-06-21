@@ -41,8 +41,8 @@ const MainScreen = () => {
                 <span className="auto-card__discount-price">2 300 000 ₽</span>
                 <span className="auto-card__normal-price">2 400 000 ₽</span>
               </div>
-              <button>Оставить заявку</button>
-              <button>В кредит от 11 000 ₽</button>
+              <button className="auto-card__btn-request" type="button">Оставить заявку</button>
+              <button className="auto-card__btn-loan" type="button">В кредит от 11 000 ₽</button>
             </div>
           </div>
 

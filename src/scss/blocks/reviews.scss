@@ -22,7 +22,9 @@
   right: 0;
 
   &:hover {
-      opacity: 0.8;
+    border: none;
+    color: $basic-white;
+    background-color: $basic-bright;
   }
   &:active {
       opacity: 0.7;
