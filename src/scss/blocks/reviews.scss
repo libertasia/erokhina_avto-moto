@@ -38,3 +38,29 @@
   display: flex;
   flex-direction: column;
 }
+
+.reviews__form-wrapper--display-block {
+  display: block;
+}
+
+.reviews__form-wrapper--display-none {
+  display: none;
+}
+
+.reviews__form-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width:100%;
+  height: 100%;
+  background: rgba(155, 154, 154, 0.6);
+}
+
+.reviews__form {
+  position:fixed;
+  background: white;
+  height: auto;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+}

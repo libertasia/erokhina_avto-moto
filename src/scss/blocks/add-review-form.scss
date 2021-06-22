@@ -1,0 +1,232 @@
+.add-review-form {
+  width: 698px;
+  min-height: 415px;
+  background-color: $background-color;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 30px 35px 35px 35px;
+}
+
+.add-review-form__btn-close {
+  width: 15px;
+  height: 16px;
+  border: none;
+  background: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  cursor: pointer;
+}
+
+.add-review-form__title {
+  font-weight: 600;
+  font-style: normal;
+  font-size: 25px;
+  margin: 0;
+  margin-bottom: 24px;
+  padding: 0;
+  padding-left: 211px;
+}
+
+.add-review-form__text {
+  font-weight: 400;
+  font-size: 14px;
+  color: #FF0000;
+  margin: 0;
+  margin-bottom: 3px;
+  padding: 0;
+}
+
+.add-review-form__fields-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  margin: 0;
+  margin-bottom: 19px;
+}
+
+.add-review-form__section {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.add-review-form__section--first {
+  margin: 0;
+  margin-right: 27px;
+}
+
+.add-review-form__field {
+  margin: 0;
+  margin-bottom: 16px;
+}
+
+.add-review-form__input {
+  width: 300px;
+  min-height: 50px;
+  background-color: $basic-white;
+  border: 1px solid rgba(72, 73, 77, 0.2);
+
+    &:active {
+      outline: none;
+      border: 1px solid #FF0000;
+    }
+
+    &:focus {
+      outline: none;
+      border: 1px solid #FF0000;
+    }
+  }
+
+  .add-review-form__input--required {
+    background-image: url("../../img/input-star.svg");
+    background-repeat: no-repeat;
+    background-size: 6px 6px;
+    background-position: 9px 12px;
+
+      &:focus {
+        background: none;
+      }
+  }
+
+  .add-review-form__input::placeholder {
+    padding: 0;
+    padding-left: 25px;
+    font-weight: 400;
+    font-size: 14px;
+    color: $basic-text-color;
+  }
+
+  .add-review-form__btn-submit {
+    width: 190px;
+    min-height: 52px;
+    margin: 0 auto;
+    background-color: $basic-bright;
+    color: $basic-white;
+    font-weight: 600;
+    font-size: 14px;
+    border: none;
+    text-decoration: none;
+    text-transform: uppercase;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+
+      &:hover {
+        background-color: $btn-hover-color;
+      }
+      &:active {
+          opacity: 0.7;
+      }
+  }
+
+  .add-review-form__rating-stars {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin: 0;
+    margin-bottom: 33px;
+  }
+
+  .add-review-form__rating-text {
+    font-weight: 600;
+    font-size: 15px;
+    color: $basic-black;
+    margin: 0;
+    margin-right: 14px;
+    padding: 0;
+  }
+
+  .add-review-form__rating-input {
+    display: none;
+  }
+
+  .add-review-form__rating-input:checked ~ .add-review-form__rating-label::after {
+    color: rgba(189, 190, 194, 0.7);
+  }
+
+  .add-review-form__rating-input:checked + .add-review-form__rating-label::after {
+    color: $basic-bright;
+  }
+
+  .add-review-form__rating-input:hover ~ .add-review-form__rating-label::after {
+    color: rgba(189, 190, 194, 0.7);
+  }
+
+  .add-review-form__rating-input:hover + .add-review-form__rating-label::after {
+    color: $basic-bright;
+  }
+
+  .add-review-form__rating-label {
+    font-size: 0;
+    line-height: 0;
+    display: block;
+    padding-right: 8px;
+    cursor: pointer;
+  }
+
+  .add-review-form__rating-label:last-child {
+    padding-right: 0;
+  }
+
+  .add-review-form__rating-label::after {
+    content: '★';
+    display: block;
+    font-size: 27px;
+    line-height: 25px;
+    color: $basic-bright;
+    -webkit-transition: color 0.2s;
+    transition: color 0.2s;
+  }
+
+  .add-review-form__textarea {
+    width: 300px;
+    height: 118px;
+    background-color: $basic-white;
+    border: 1px solid rgba(72, 73, 77, 0.2);
+    resize: none;
+
+      &:active {
+        outline: none;
+        border: 1px solid #FF0000;
+      }
+
+      &:focus {
+        outline: none;
+        border: 1px solid #FF0000;
+      }
+
+      &::-webkit-input-placeholder {
+        padding: 0;
+        padding-left: 25px;
+        padding-top: 15px;
+        font-weight: 400;
+        font-size: 14px;
+        color: $basic-text-color; }
+      &:-ms-input-placeholder {
+        padding: 0;
+        padding-left: 25px;
+        padding-top: 15px;
+        font-weight: 400;
+        font-size: 14px;
+        color: $basic-text-color; }
+      &::-ms-input-placeholder {
+        padding: 0;
+        padding-left: 25px;
+        padding-top: 15px;
+        font-weight: 400;
+        font-size: 14px;
+        color: $basic-text-color; }
+      &::placeholder {
+        padding: 0;
+        padding-left: 25px;
+        padding-top: 15px;
+        font-weight: 400;
+        font-size: 14px;
+        color: $basic-text-color; }
+  }

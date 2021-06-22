@@ -118,14 +118,50 @@
 }
 
 .review__rating {
+  display: flex;
+  flex-direction: row;
+  justify-content: baseline;
+  margin: 0;
+  margin-bottom: 26px;
+  padding: 0;
+}
+
+.review__rating-text {
   font-weight: 400;
   font-size: 15px;
   font-style: normal;
   color: $basic-bright;
   margin: 0;
-  margin-bottom: 26px;
   padding: 0;
-  padding-left: 123px;
+  padding-left: 15px;
+}
+
+.review__star {
+  width: 17px;
+  height: 17px;
+  margin: 0;
+  margin-right: 5px;
+  position: relative;
+
+    &::before {
+      position: absolute;
+      content: "";
+      background-image: url("../../img/star-default.svg");
+      width: 17px;
+      height: 16px;
+    }
+}
+
+.review__star--bright {
+  position: relative;
+
+  &::before {
+    position: absolute;
+    content: "";
+    background-image: url("../../img/star-bright.svg");
+    width: 17px;
+    height: 16px;
+  }
 }
 
 .review__details {

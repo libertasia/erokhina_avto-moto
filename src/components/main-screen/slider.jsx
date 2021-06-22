@@ -87,7 +87,7 @@ const Slider = () => {
       </picture>
 
       <div className="slider__navigation">
-        <button className="slider__btn slider__btn--previous" type="button" onClick={onPrevBtnClick} disabled={activeIndex === 0}>
+        <button className="slider__btn slider__btn--previous" type="button" aria-label="Предыдуший слайд" onClick={onPrevBtnClick} disabled={activeIndex === 0}>
           <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="26" cy="26" r="25.5" fill="white" stroke="#D7D9DF"/>
             <path className="slider__btn-arrow" d="M17.0043 26.1719L22.9184 20.3686M17.0043 26.1719L22.6929 31.9692M17.0043 26.1719L35.9813 26.3513" stroke="#48494D"/>
@@ -115,7 +115,7 @@ const Slider = () => {
           </li>
         </ul>
 
-        <button className="slider__btn slider__btn--next" type="button" onClick={onNextBtnClick} disabled={activeIndex === galleryImages.length - 1}>
+        <button className="slider__btn slider__btn--next" type="button" aria-label="Следующий слайд" onClick={onNextBtnClick} disabled={activeIndex === galleryImages.length - 1}>
           <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M0.500408 26C0.500408 40.0834 11.9143 51.5 25.9939 51.5C40.0734 51.5 51.4873 40.0834 51.4873 26C51.4873 11.9166 40.0734 0.5 25.9939 0.5C11.9143 0.5 0.500408 11.9166 0.500408 26Z" fill="white" stroke="#D7D9DF"/>
             <path className="slider__btn-arrow" d="M34.9873 26.1719L29.0747 20.3686M34.9873 26.1719L29.3001 31.9692M34.9873 26.1719L16.0151 26.3513" stroke="#48494D"/>
