@@ -2,11 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {YMaps, Map, Placemark} from 'react-yandex-maps';
-// import dayjs from 'dayjs';
-// import {FilmShape, ReviewsShape} from '../../../shapes';
 import {TabTypes} from '../../const';
-// import {Rating, RatingLevel, TabTypes} from '../../const';
-// import {getFilm, getReviews, getActiveTab} from '../../../store/selectors';
 import {getActiveTab} from '../../store/selectors';
 import {ActionCreator} from '../../store/action';
 import map1xpng from '../../img/map@1x.png';
@@ -32,9 +28,6 @@ const TabDetails = [
 
 const Tabs = (props) => {
   const {activeTab, setActiveTab} = props;
-  // const {film, reviews, activeTab, setActiveTab} = props;
-
-  // const filmDurarion = getDuration(film);
 
   let tabContent = null;
 
@@ -184,15 +177,6 @@ const Tabs = (props) => {
               </li>
             ))
         }
-        {/* <li className="auto-nav__item auto-nav__item--active">
-          <a href="#" className="auto-nav__link auto-nav__link--active">Характеристики</a>
-        </li>
-        <li className="auto-nav__item">
-          <a href="#" className="auto-nav__link">Отзывы</a>
-        </li>
-        <li className="auto-nav__item">
-          <a href="#" className="auto-nav__link">Контакты</a>
-        </li> */}
       </ul>
       {tabContent}
     </div>
@@ -201,14 +185,10 @@ const Tabs = (props) => {
 
 Tabs.propTypes = {
   activeTab: PropTypes.string.isRequired,
-  // film: FilmShape,
-  // reviews: ReviewsShape,
   setActiveTab: PropTypes.func,
 };
 
 const mapStateToProps = (state) => ({
-  // film: getFilm(state),
-  // reviews: getReviews(state),
   activeTab: getActiveTab(state),
 });
 
