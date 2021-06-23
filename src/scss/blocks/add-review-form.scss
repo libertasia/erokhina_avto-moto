@@ -36,7 +36,7 @@
   font-size: 14px;
   color: #FF0000;
   margin: 0;
-  margin-bottom: 3px;
+  margin-bottom: 5px;
   padding: 0;
 }
 
@@ -106,16 +106,20 @@
     margin: 0 auto;
     background-color: $basic-bright;
     color: $basic-white;
+    font-family: $main-font;
     font-weight: 600;
     font-size: 14px;
+    line-height: 19.07px;
     border: none;
     text-decoration: none;
     text-transform: uppercase;
+    text-align: center;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     white-space: nowrap;
+    letter-spacing: 0.12em;
 
       &:hover {
         background-color: $btn-hover-color;
@@ -130,7 +134,9 @@
     flex-direction: row;
     flex-wrap: nowrap;
     margin: 0;
-    margin-bottom: 33px;
+    margin-bottom: 28px;
+    padding: 0;
+    padding-top: 11px;
   }
 
   .add-review-form__rating-text {

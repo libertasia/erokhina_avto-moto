@@ -156,20 +156,24 @@ const Tabs = (props) => {
     case TabTypes.CONTACTS:
       tabContent = (
         <div className="auto-nav__contacts">
-          <div className="auto-nav__contacts-details">
-            <div className="auto-nav__contacts-title">Адрес
+          <ul className="auto-nav__contacts-details">
+            <li className="auto-nav__contacts-item">
+              <p className="auto-nav__contacts-title">Адрес</p>
               <p className="auto-nav__contacts-text">Санкт-Петербург,<br />набережная реки Карповки, дом 5</p>
-            </div>
-            <div className="auto-nav__contacts-title">Режим работы
+            </li>
+            <li className="auto-nav__contacts-item">
+              <p className="auto-nav__contacts-title">Режим работы</p>
               <p className="auto-nav__contacts-text">Ежедневно, с 10:00 до 21:00</p>
-            </div>
-            <div className="auto-nav__contacts-title">Телефон
+            </li>
+            <li className="auto-nav__contacts-item">
+              <p className="auto-nav__contacts-title">Телефон</p>
               <p className="auto-nav__contacts-text"><a className="auto-nav__contacts-link" href="tel:+78003335599">8 (800) 333-55-99</a></p>
-            </div>
-            <div className="auto-nav__contacts-title">E-mail
+            </li>
+            <li className="auto-nav__contacts-item">
+              <p className="auto-nav__contacts-title">E-mail</p>
               <p className="auto-nav__contacts-text"><a className="auto-nav__contacts-link" href="mailto:info@avto-moto.ru">info@avto-moto.ru</a></p>
-            </div>
-          </div>
+            </li>
+          </ul>
           <div className="auto-nav__contacts-map">
             <YMaps>
               <Map className="auto-nav__map-yandex"

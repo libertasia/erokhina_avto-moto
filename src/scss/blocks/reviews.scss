@@ -19,7 +19,9 @@
   width: 189px;
   min-height: 52px;
   position: absolute;
-  right: 0;
+  top: 20px;
+  right: 2px;
+  letter-spacing: 0.12em;
 
   &:hover {
     border: none;
@@ -34,6 +36,7 @@
 .reviews__list {
   list-style: none;
   margin: 0;
+  margin-top: 20px;
   padding: 0;
   display: flex;
   flex-direction: column;

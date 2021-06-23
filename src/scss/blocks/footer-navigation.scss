@@ -4,6 +4,10 @@
   margin: 0;
   min-width: 1166px;
   padding: 0;
+
+  @media (min-width: $medium) and (max-width: $content-breakpoint) {
+    min-width: auto;
+  }
 }
 
 .footer-navigation__item {
@@ -13,6 +17,10 @@
   margin-top: 30px;
   margin-bottom: 30px;
   margin-right: 66px;
+
+  @media (min-width: $medium) and (max-width: $content-breakpoint) {
+    margin-right: 30px;
+  }
 }
 
 .footer-navigation__item:last-child {

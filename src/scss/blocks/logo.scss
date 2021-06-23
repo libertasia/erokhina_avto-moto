@@ -1,5 +1,9 @@
 .logo {
-    padding: 15px 0 14px 0;
+    padding: 15px 0 10px 0;
     margin: 0;
     margin-right: 516px;
+
+    @media (min-width: $medium) and (max-width: $content-breakpoint) {
+      margin-right: 400px;
+    }
   }
