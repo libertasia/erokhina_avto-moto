@@ -22,6 +22,18 @@ const TabTypes = {
   REVIEWS: `reviews`,
   CONTACTS: `contacts`,
 };
-// const APIKey = `498eb836c87d82b00421`;
 
-export {AppRoute, APIRoute, TabTypes};
+const Rating = {
+  ONE: 1,
+  TWO: 2,
+  THREE: 3,
+  FOUR: 4,
+  FIVE: 5,
+};
+
+const RatingLevel = {
+  BAD: `Не cоветует`,
+  GOOD: `Советует`,
+};
+
+export {AppRoute, APIRoute, TabTypes, Rating, RatingLevel};

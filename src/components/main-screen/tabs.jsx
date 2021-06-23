@@ -2,8 +2,8 @@ import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {YMaps, Map, Placemark} from 'react-yandex-maps';
-import {TabTypes} from '../../const';
-import {getActiveTab} from '../../store/selectors';
+import {Rating, RatingLevel, TabTypes} from '../../const';
+import {getActiveTab, getAllReviews} from '../../store/selectors';
 import {ActionCreator} from '../../store/action';
 import map1xpng from '../../img/map@1x.png';
 import map2xpng from '../../img/map@2x.png';
@@ -33,10 +33,16 @@ const TabDetails = [
   },
 ];
 
-const Reviews = [];
+const getReviewText = (review) => {
+  if (review.rating >= Rating.THREE) {
+    return RatingLevel.GOOD;
+  }
+
+  return RatingLevel.BAD;
+};
 
 const Tabs = (props) => {
-  const {activeTab, setActiveTab} = props;
+  const {activeTab, setActiveTab, reviews} = props;
 
   const [isReviewFormVisible, setReviewFormVisible] = useState(false);
 
@@ -62,56 +68,12 @@ const Tabs = (props) => {
   };
 
   useEffect(() => {
-    const name = localStorage.getItem(`name`);
-    const comment = localStorage.getItem(`comment`);
-    Reviews.push({
-      name,
-      comment
-    });
-
     document.addEventListener(KEY_DOWN, handleEscPress);
 
     return () => {
       document.removeEventListener(KEY_DOWN, handleEscPress);
     };
   }, []);
-
-  // const createReviewTemplate = (review) => {
-  //   return `<li className="review">
-  //     <cite className="review__author">${review.name}</cite>
-  //     <div className="review__text">
-  //       <p className="review__advantages">Достоинства</p>
-  //       <q className="review__advantages-quote">мощность, внешний вид</q>
-  //     </div>
-  //     <div className="review__text">
-  //       <p className="review__disadvantages">Недостатки</p>
-  //       <q className="review__disadvantages-quote">Слабые тормозные колодки (пришлось заменить)</q>
-  //     </div>
-  //     <blockquote className="review__quote">
-  //       <p className="review__comment">Комментарий</p>
-  //       <p className="review__comment-text">${review.comment}</p>
-  //       <div className="review__rating">
-  //         <span className="review__star review__star--bright"></span>
-  //         <span className="review__star review__star--bright"></span>
-  //         <span className="review__star review__star--bright"></span>
-  //         <span className="review__star"></span>
-  //         <span className="review__star"></span>
-  //         <p className="review__rating-text">Советует</p>
-  //       </div>
-  //       <footer className="review__details">
-  //         <time className="review__date" dateTime="2021-06-17">1 минуту назад</time>
-  //         <button className="reviews__btn-answer" type="button">Ответить</button>
-  //       </footer>
-  //     </blockquote>
-  //   </li>`;
-  // };
-
-  // const createReviewsMarkup = (reviews) => {
-  //   const reviewsMarkup = reviews.map(
-  //       (element) => createReviewTemplate(
-  //           element)).join(``);
-  //   return reviewsMarkup;
-  // };
 
   switch (activeTab) {
     case TabTypes.CHARACTERISTICS:
@@ -156,71 +118,17 @@ const Tabs = (props) => {
           <button className="reviews__btn" type="button" onClick={handleReviewBtnClick}>Оставить отзыв</button>
           <AddReviewForm isVisible={isReviewFormVisible} handleClose={hideReviewForm}/>
           <ul className="reviews__list">
-            <li className="review">
-              <cite className="review__author">Борис Иванов</cite>
-              <div className="review__text">
-                <p className="review__advantages">Достоинства</p>
-                <q className="review__advantages-quote">мощность, внешний вид</q>
-              </div>
-              <div className="review__text">
-                <p className="review__disadvantages">Недостатки</p>
-                <q className="review__disadvantages-quote">Слабые тормозные колодки (пришлось заменить)</q>
-              </div>
-              <blockquote className="review__quote">
-                <p className="review__comment">Комментарий</p>
-                <p className="review__comment-text">Взяли по трейд-ин, на выгодных условиях у дилера. Стильная внешка и крут по базовым характеристикам. Не думал, что пересяду на китайский автопром, но сейчас гоняю и понимаю, что полностью доволен.</p>
-                <div className="review__rating">
-                  <span className="review__star review__star--bright"></span>
-                  <span className="review__star review__star--bright"></span>
-                  <span className="review__star review__star--bright"></span>
-                  <span className="review__star"></span>
-                  <span className="review__star"></span>
-                  <p className="review__rating-text">Советует</p>
-                </div>
-                <footer className="review__details">
-                  <time className="review__date" dateTime="2021-06-17">1 минуту назад</time>
-                  <button className="reviews__btn-answer" type="button">Ответить</button>
-                </footer>
-              </blockquote>
-            </li>
-            <li className="review">
-              <cite className="review__author">Марсель Исмагилов</cite>
-              <div className="review__text">
-                <p className="review__advantages">Достоинства</p>
-                <q className="review__advantages-quote">Cтиль, комфорт, управляемость</q>
-              </div>
-              <div className="review__text">
-                <p className="review__disadvantages">Недостатки</p>
-                <q className="review__disadvantages-quote"> Дорогой ремонт и обслуживание</q>
-              </div>
-              <blockquote className="review__quote">
-                <p className="review__comment">Комментарий</p>
-                <p className="review__comment-text">Дизайн отличный, управление просто шикарно, ощущения за рулём такой машины особые. Но ремонт очень дорогой. Пару месяцев назад пришлось менять двигатель. По стоимости вышло как новый автомобиль. Так что, если покупать эту машину, надо быть готовым к большим расходам на обслуживание.</p>
-                <div className="review__rating">
-                  <span className="review__star review__star--bright"></span>
-                  <span className="review__star review__star--bright"></span>
-                  <span className="review__star review__star--bright"></span>
-                  <span className="review__star"></span>
-                  <span className="review__star"></span>
-                  <p className="review__rating-text">Советует</p>
-                </div>
-                <footer className="review__details">
-                  <time className="review__date" dateTime="2021-06-17">1 минуту назад</time>
-                  <button className="reviews__btn-answer" type="button">Ответить</button>
-                </footer>
-              </blockquote>
-            </li>
-            {Reviews.map(
+            {reviews.map(
                 (review, index) => (
                   <li key={`${review.name}-${index}`} className="review">
                     <cite className="review__author">{review.name}</cite>
                     <div className="review__text">
                       <p className="review__advantages">Достоинства</p>
-                      <q className="review__advantages-quote">мощность, внешний вид</q>
+                      <q className="review__advantages-quote">{review.pros}</q>
                     </div>
                     <div className="review__text">
                       <p className="review__disadvantages">Недостатки</p>
-                      <q className="review__disadvantages-quote">Слабые тормозные колодки (пришлось заменить)</q>
+                      <q className="review__disadvantages-quote">{review.cons}</q>
                     </div>
                     <blockquote className="review__quote">
                       <p className="review__comment">Комментарий</p>
@@ -231,7 +139,7 @@ const Tabs = (props) => {
                         <span className="review__star review__star--bright"></span>
                         <span className="review__star"></span>
                         <span className="review__star"></span>
-                        <p className="review__rating-text">Советует</p>
+                        <p className="review__rating-text">{getReviewText(review)}</p>
                       </div>
                       <footer className="review__details">
                         <time className="review__date" dateTime="2021-06-17">1 минуту назад</time>
@@ -309,10 +217,20 @@ const Tabs = (props) => {
 Tabs.propTypes = {
   activeTab: PropTypes.string.isRequired,
   setActiveTab: PropTypes.func,
+  reviews: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        pros: PropTypes.string,
+        cons: PropTypes.string,
+        rating: PropTypes.number,
+        comment: PropTypes.string.isRequired,
+      })
+  ).isRequired,
 };
 
 const mapStateToProps = (state) => ({
   activeTab: getActiveTab(state),
+  reviews: getAllReviews(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

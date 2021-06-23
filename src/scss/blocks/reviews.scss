@@ -49,6 +49,7 @@
 
 .reviews__form-wrapper {
   position: fixed;
+  z-index: 1;
   top: 0;
   left: 0;
   width:100%;
@@ -59,7 +60,6 @@
 .reviews__form {
   position:fixed;
   background: white;
-  height: auto;
   top:50%;
   left:50%;
   transform: translate(-50%,-50%);

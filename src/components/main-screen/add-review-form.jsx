@@ -1,7 +1,12 @@
 import React, {useRef, useEffect, useState} from 'react';
+import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
+import {ActionCreator} from '../../store/action';
+import {Rating} from '../../const';
 
 const MOUSE_DOWN = `mousedown`;
+
+const RATINGS_COUNT = 5;
 
 function useOnClick(ref, handler) {
   useEffect(() => {
@@ -22,23 +27,38 @@ function useOnClick(ref, handler) {
   }, []); // Empty array ensures that effect is only run on mount and unmount
 }
 
-const RATINGS_COUNT = 5;
-
 const AddReviewForm = (props) => {
 
-  const {isVisible, handleClose} = props;
+  const {isVisible, handleClose, onReviewSubmit} = props;
 
-  const [name, setName] = useState(``);
-  const [pros, setPros] = useState(``);
-  const [cons, setCons] = useState(``);
-  const [rating, setRating] = useState(RATINGS_COUNT);
-  const [comment, setComment] = useState(``);
+  const [review, setReview] = useState({
+    name: ``,
+    pros: ``,
+    cons: ``,
+    rating: Rating.FIVE,
+    comment: ``,
+  });
 
-  const onNameChange = (evt) => setName(evt.target.value);
-  const onProsChange = (evt) => setPros(evt.target.value);
-  const onConsChange = (evt) => setCons(evt.target.value);
-  const onRatingChange = (evt) => setRating(evt.target.value);
-  const onCommentChange = (evt) => setComment(evt.target.value);
+  const setName = (evt) => {
+    setReview({...review, name: evt.target.value});
+    localStorage.setItem(`name`, evt.target.value);
+  };
+  const setPros = (evt) => {
+    setReview({...review, pros: evt.target.value});
+    localStorage.setItem(`pros`, evt.target.value);
+  };
+  const setCons = (evt) => {
+    setReview({...review, cons: evt.target.value});
+    localStorage.setItem(`cons`, evt.target.value);
+  };
+  const setRating = (evt) => {
+    setReview({...review, rating: evt.target.value});
+    localStorage.setItem(`rating`, evt.target.value);
+  };
+  const setComment = (evt) => {
+    setReview({...review, comment: evt.target.value});
+    localStorage.setItem(`comment`, evt.target.value);
+  };
 
   const ref = useRef();
 
@@ -48,6 +68,19 @@ const AddReviewForm = (props) => {
 
   useEffect(() => {
     inputEl.current.focus();
+    const reviewName = localStorage.getItem(`name`);
+    const pros = localStorage.getItem(`pros`);
+    const cons = localStorage.getItem(`cons`);
+    const rating = localStorage.getItem(`rating`);
+    const comment = localStorage.getItem(`comment`);
+    setReview({
+      ...review,
+      name: reviewName,
+      pros,
+      cons,
+      rating,
+      comment
+    });
   }, []);
 
   const hiddenClassName = isVisible ? `reviews__form-wrapper--display-block` : `reviews__form-wrapper--display-none`;
@@ -56,11 +89,7 @@ const AddReviewForm = (props) => {
 
   const handleFormSubmit = (evt) => {
     evt.preventDefault();
-    localStorage.setItem(`name`, name);
-    localStorage.setItem(`pros`, pros);
-    localStorage.setItem(`cons`, cons);
-    localStorage.setItem(`rating`, rating);
-    localStorage.setItem(`comment`, comment);
+    onReviewSubmit(review);
     handleClose();
   };
 
@@ -78,21 +107,21 @@ const AddReviewForm = (props) => {
           <div className="add-review-form__fields-wrapper">
             <div className="add-review-form__section add-review-form__section--first">
               <div className="add-review-form__field">
-                <input className="add-review-form__input add-review-form__input--required" type="text" placeholder="Имя" name="user-name" id="user-name"required autoFocus={true} ref={inputEl} onChange={onNameChange}/>
+                <input className="add-review-form__input add-review-form__input--required" type="text" placeholder="Имя" name="user-name" id="user-name"required autoFocus={true} ref={inputEl} onChange={setName} value={review.name}/>
                 <label className="add-review-form__label visually-hidden" htmlFor="user-name" >Имя</label>
               </div>
               <div className="add-review-form__field">
-                <input className="add-review-form__input" type="text" placeholder="Достоинства" name="advantages" id="advantages" onChange={onProsChange}/>
+                <input className="add-review-form__input" type="text" placeholder="Достоинства" name="advantages" id="advantages" onChange={setPros} value={review.pros}/>
                 <label className="add-review-form__label visually-hidden" htmlFor="advantages" >Достоинства</label>
               </div>
               <div className="add-review-form__field">
-                <input className="add-review-form__input" type="text" placeholder="Недостатки" name="disadvantages" id="disadvantages" onChange={onConsChange}/>
+                <input className="add-review-form__input" type="text" placeholder="Недостатки" name="disadvantages" id="disadvantages" onChange={setCons} value={review.cons}/>
                 <label className="add-review-form__label visually-hidden" htmlFor="disadvantages" >Недостатки</label>
               </div>
             </div>
 
             <div className="add-review-form__section">
-              <div className="add-review-form__rating-stars" onChange={onRatingChange}>
+              <div className="add-review-form__rating-stars" onChange={setRating}>
                 <p className="add-review-form__rating-text">Оцените товар:</p>
                 {
                   ratingValues.map((value) => (
@@ -104,7 +133,7 @@ const AddReviewForm = (props) => {
                 }
               </div>
               <div className="add-review-form__comment">
-                <textarea className="add-review-form__textarea add-review-form__input--required" name="review-text" id="review-text" placeholder="Комментарий" required onChange={onCommentChange}/>
+                <textarea className="add-review-form__textarea add-review-form__input--required" name="review-text" id="review-text" placeholder="Комментарий" required onChange={setComment} value={review.comment}/>
               </div>
             </div>
           </div>
@@ -119,6 +148,15 @@ const AddReviewForm = (props) => {
 AddReviewForm.propTypes = {
   isVisible: PropTypes.bool.isRequired,
   handleClose: PropTypes.func.isRequired,
+  onReviewSubmit: PropTypes.func.isRequired,
 };
 
-export default AddReviewForm;
+
+const mapDispatchToProps = (dispatch) => ({
+  onReviewSubmit(review) {
+    dispatch(ActionCreator.addReview(review));
+  },
+});
+
+export {AddReviewForm};
+export default connect(null, mapDispatchToProps)(AddReviewForm);
