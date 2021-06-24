@@ -3,10 +3,10 @@
   border-bottom: 0.5px solid rgba(0, 0, 0, 0.2);
   padding: 20px 0;
 
-    &:first-child {
-      padding: 0;
-      padding-bottom: 20px;
-    }
+  &:first-child {
+    padding: 0;
+    padding-bottom: 20px;
+  }
 }
 
 .review__author {
@@ -36,16 +36,16 @@
   margin-bottom: 5px;
   position: relative;
 
-    &::before {
-      content: "";
-      position: absolute;
-      top: 8px;
-      left: -18px;
-      width: 8px;
-      height: 8px;
-      background-image: url("../../img/plus-icon.svg");
-      display: inline-block;
-    }
+  &::before {
+    content: "";
+    position: absolute;
+    top: 8px;
+    left: -18px;
+    width: 8px;
+    height: 8px;
+    background-image: url("../../img/plus-icon.svg");
+    display: inline-block;
+  }
 }
 
 .review__disadvantages {
@@ -58,16 +58,16 @@
   margin-bottom: 5px;
   position: relative;
 
-    &::before {
-      content: "";
-      position: absolute;
-      top: 10px;
-      left: -18px;
-      width: 7px;
-      height: 2px;
-      background-image: url("../../img/minus-icon.svg");
-      display: inline-block;
-    }
+  &::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: -18px;
+    width: 7px;
+    height: 2px;
+    background-image: url("../../img/minus-icon.svg");
+    display: inline-block;
+  }
 }
 
 .review__advantages-quote {
@@ -76,10 +76,10 @@
   font-style: normal;
   color: $basic-black;
 
-    &::after,
-    &::before {
-      content: none;
-    }
+  &::after,
+  &::before {
+    content: none;
+  }
 }
 
 .review__disadvantages-quote {
@@ -88,10 +88,10 @@
   font-style: normal;
   color: $basic-black;
 
-    &::after,
-    &::before {
-      content: none;
-    }
+  &::after,
+  &::before {
+    content: none;
+  }
 }
 
 .review__quote {
@@ -147,13 +147,13 @@
   margin-right: 5px;
   position: relative;
 
-    &::before {
-      position: absolute;
-      content: "";
-      background-image: url("../../img/star-default.svg");
-      width: 17px;
-      height: 16px;
-    }
+  &::before {
+    position: absolute;
+    content: "";
+    background-image: url("../../img/star-default.svg");
+    width: 17px;
+    height: 16px;
+  }
 }
 
 .review__star--bright {

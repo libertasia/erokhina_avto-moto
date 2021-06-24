@@ -1,12 +1,12 @@
 .header {
-    flex: 0 0 auto;
-    background-color: $background-color;
-    margin: 0;
-    margin-bottom: 74px;
-  }
+  flex: 0 0 auto;
+  background-color: $background-color;
+  margin: 0;
+  margin-bottom: 74px;
+}
 
 .header__navigation {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }

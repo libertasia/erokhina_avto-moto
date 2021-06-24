@@ -31,14 +31,14 @@
   color: $basic-text-color;
 
   &:hover {
-      color: $basic-bright;
-      opacity: 0.3;
+    color: $basic-bright;
+    opacity: 0.3;
   }
   &:active {
-      color: $basic-bright;
+    color: $basic-bright;
   }
 
   &--active {
-      color: $basic-bright;
+    color: $basic-bright;
   }
 }

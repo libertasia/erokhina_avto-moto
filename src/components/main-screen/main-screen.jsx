@@ -2,8 +2,8 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import logo from '../../img/logo.svg';
 import {AppRoute} from '../../const';
-import Tabs from './tabs';
-import Slider from './slider';
+import Tabs from '../tabs/tabs';
+import Slider from '../slider/slider';
 
 
 const MainScreen = () => {

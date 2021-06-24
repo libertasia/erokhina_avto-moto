@@ -10,7 +10,7 @@ import map2xpng from '../../img/map@2x.png';
 import map1xwebp from '../../img/map@1x.webp';
 import map2xwebp from '../../img/map@2x.webp';
 import pin from '../../img/pin.svg';
-import AddReviewForm from './add-review-form';
+import AddReviewForm from '../add-review-form/add-review-form';
 
 const ESC_KEY_CODE = 27;
 
@@ -34,11 +34,7 @@ const TabDetails = [
 ];
 
 const getReviewText = (review) => {
-  if (review.rating >= Rating.THREE) {
-    return RatingLevel.GOOD;
-  }
-
-  return RatingLevel.BAD;
+  return review.rating >= Rating.THREE ? RatingLevel.GOOD : RatingLevel.BAD;
 };
 
 const Tabs = (props) => {

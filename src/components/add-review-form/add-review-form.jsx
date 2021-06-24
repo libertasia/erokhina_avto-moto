@@ -8,6 +8,16 @@ const MOUSE_DOWN = `mousedown`;
 
 const RATINGS_COUNT = 5;
 
+const RADIX = 10;
+
+const ReviewField = {
+  NAME: `name`,
+  PROS: `pros`,
+  CONS: `cons`,
+  RATING: `rating`,
+  COMMENT: `comment`,
+};
+
 function useOnClick(ref, handler) {
   useEffect(() => {
     const listener = (event) => {
@@ -41,23 +51,23 @@ const AddReviewForm = (props) => {
 
   const setName = (evt) => {
     setReview({...review, name: evt.target.value});
-    localStorage.setItem(`name`, evt.target.value);
+    localStorage.setItem(ReviewField.NAME, evt.target.value);
   };
   const setPros = (evt) => {
     setReview({...review, pros: evt.target.value});
-    localStorage.setItem(`pros`, evt.target.value);
+    localStorage.setItem(ReviewField.PROS, evt.target.value);
   };
   const setCons = (evt) => {
     setReview({...review, cons: evt.target.value});
-    localStorage.setItem(`cons`, evt.target.value);
+    localStorage.setItem(ReviewField.CONS, evt.target.value);
   };
   const setRating = (evt) => {
-    setReview({...review, rating: evt.target.value});
-    localStorage.setItem(`rating`, evt.target.value);
+    setReview({...review, rating: parseInt(evt.target.value, RADIX)});
+    localStorage.setItem(ReviewField.RATING, evt.target.value);
   };
   const setComment = (evt) => {
     setReview({...review, comment: evt.target.value});
-    localStorage.setItem(`comment`, evt.target.value);
+    localStorage.setItem(ReviewField.COMMENT, evt.target.value);
   };
 
   const ref = useRef();
@@ -68,18 +78,18 @@ const AddReviewForm = (props) => {
 
   useEffect(() => {
     inputEl.current.focus();
-    const reviewName = localStorage.getItem(`name`);
-    const pros = localStorage.getItem(`pros`);
-    const cons = localStorage.getItem(`cons`);
-    const rating = localStorage.getItem(`rating`);
-    const comment = localStorage.getItem(`comment`);
+    const reviewName = localStorage.getItem(ReviewField.NAME);
+    const pros = localStorage.getItem(ReviewField.PROS);
+    const cons = localStorage.getItem(ReviewField.CONS);
+    const rating = parseInt(localStorage.getItem(ReviewField.RATING), 10);
+    const comment = localStorage.getItem(ReviewField.COMMENT);
     setReview({
       ...review,
-      name: reviewName,
-      pros,
-      cons,
-      rating,
-      comment
+      name: reviewName !== null ? reviewName : ``,
+      pros: pros !== null ? pros : ``,
+      cons: cons !== null ? cons : ``,
+      rating: rating !== null ? rating : Rating.FIVE,
+      comment: comment !== null ? comment : ``,
     });
   }, []);
 
