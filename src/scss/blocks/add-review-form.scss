@@ -30,18 +30,22 @@
   font-style: normal;
   font-size: 25px;
   margin: 0;
-  margin-bottom: 24px;
+  margin-bottom: 47px;
   padding: 0;
   padding-left: 211px;
+}
+
+.add-review-form__comment {
+  position: relative;
 }
 
 .add-review-form__text {
   font-weight: 400;
   font-size: 14px;
   color: #FF0000;
-  margin: 0;
-  margin-bottom: 5px;
-  padding: 0;
+  position: absolute;
+  top: -22px;
+  left: 0;
 }
 
 .add-review-form__fields-wrapper {
@@ -66,6 +70,10 @@
 .add-review-form__field {
   margin: 0;
   margin-bottom: 16px;
+}
+
+.add-review-form__field--required {
+  position: relative;
 }
 
 .add-review-form__input {
@@ -96,10 +104,6 @@
   background-repeat: no-repeat;
   background-size: 6px 6px;
   background-position: 9px 12px;
-
-  &:focus {
-    background: none;
-  }
 }
 
 .add-review-form__input::placeholder {
