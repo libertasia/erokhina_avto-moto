@@ -12,6 +12,7 @@
   border: none;
   background: none;
   display: block;
+  cursor: pointer;
 
   &:disabled svg .slider__btn-arrow{
     stroke: $grey;

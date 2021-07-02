@@ -22,6 +22,7 @@
   top: 20px;
   right: 2px;
   letter-spacing: 0.12em;
+  cursor: pointer;
 
   &:hover {
     border: none;
@@ -66,4 +67,28 @@
   top:50%;
   left:50%;
   transform: translate(-50%,-50%);
+}
+
+.reviews__btn-answer {
+  margin: 0;
+  margin-left: 26px;
+  border: none;
+  font-weight: 400;
+  font-size: 16px;
+  color: $basic-bright;
+  background: none;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  right: 0;
+  cursor: pointer;
+
+  &:hover {
+      opacity: 0.8;
+  }
+  &:active {
+      opacity: 0.7;
+  }
 }

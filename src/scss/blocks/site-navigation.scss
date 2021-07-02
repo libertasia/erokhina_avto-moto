@@ -28,6 +28,7 @@
 }
 
 .site-navigation__link {
+  cursor: pointer;
   color: $basic-text-color;
 
   &:hover {
