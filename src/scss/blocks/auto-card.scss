@@ -22,6 +22,18 @@
   margin-right: 57px;
   padding: 0%;
   padding-top: 15px;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 15px;
+    left: 0;
+    width: 122px;
+    height: 30px;
+    background-image: url("../../img/new-model-icon.svg");
+    display: inline-block;
+  }
 }
 
 .auto-card__promo {
