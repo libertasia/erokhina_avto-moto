@@ -45,7 +45,7 @@ const AddReviewForm = (props) => {
     name: ``,
     pros: ``,
     cons: ``,
-    rating: Rating.FIVE,
+    rating: Rating.THREE,
     comment: ``,
   });
 
@@ -84,14 +84,16 @@ const AddReviewForm = (props) => {
     const reviewName = localStorage.getItem(ReviewField.NAME);
     const pros = localStorage.getItem(ReviewField.PROS);
     const cons = localStorage.getItem(ReviewField.CONS);
-    const rating = parseInt(localStorage.getItem(ReviewField.RATING), 10);
+    const savedRating = localStorage.getItem(ReviewField.RATING);
+    const rating = savedRating ? parseInt(localStorage.getItem(ReviewField.RATING), 10) : Rating.THREE;
+
     const comment = localStorage.getItem(ReviewField.COMMENT);
     setReview({
       ...review,
       name: reviewName !== null ? reviewName : ``,
       pros: pros !== null ? pros : ``,
       cons: cons !== null ? cons : ``,
-      rating: rating !== null ? rating : Rating.FIVE,
+      rating: rating !== null ? rating : Rating.THREE,
       comment: comment !== null ? comment : ``,
     });
   }, []);
@@ -155,14 +157,16 @@ const AddReviewForm = (props) => {
             <div className="add-review-form__section">
               <div className="add-review-form__rating-stars" onChange={setRating}>
                 <p className="add-review-form__rating-text">Оцените товар:</p>
-                {
-                  ratingValues.map((value) => (
-                    <React.Fragment key={`star-${value}`}>
-                      <input className="add-review-form__rating-input" id={`star-${value}`} type="radio" name="rating" value={value}/>
-                      <label className="add-review-form__rating-label" htmlFor={`star-${value}`}>Rating {value}</label>
-                    </React.Fragment>
-                  ))
-                }
+                <div className="add-review-form__rating-wrapper">
+                  {
+                    ratingValues.slice(0).reverse().map((value) => (
+                      <React.Fragment key={`star-${value}`}>
+                        <input className="add-review-form__rating-input visually-hidden" tabIndex="0" id={`star-${value}`} type="radio" name="rating" value={value} defaultChecked={value === review.rating}/>
+                        <label className="add-review-form__rating-label" htmlFor={`star-${value}`}>Rating {value}</label>
+                      </React.Fragment>
+                    ))
+                  }
+                </div>
               </div>
               <div className="add-review-form__comment">
                 <span className={`add-review-form__text ${hiddenCommentClassName}`}>Пожалуйста, заполните поле</span>
